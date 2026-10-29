@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TURBOMARKOVNIK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #ff4500;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 2px solid #333333;
+            border-radius: 4px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            text-align: center;
+        }
+        input[type="text"]:focus {
+            border-color: #ff4500;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff4500;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #e03e00;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            min-height: 24px;
+        }
+        .success { color: #00ff00; }
+        .error { color: #ff3333; }
+        .info-link {
+            display: block;
+            margin-top: 25px;
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .info-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>TURBOMARKOVNIK</h1>
+    
+    <div class="form-group">
+        <input type="text" id="code-input" placeholder="Введите ваш код" autocomplete="off">
+    </div>
+    
+    <button onclick="checkCode()">Получить</button>
+    
+    <div id="result-message" class="result"></div>
+    
+    <a href="#" class="info-link">Ссылка на сервер</a>
+</div>
+
+<script>
+    function checkCode() {
+        const input = document.getElementById('code-input').value.trim();
+        const result = document.getElementById('result-message');
+        
+        const codes = {
+            "START123": "Стартовый набор игрока",
+            "MARKOV": "Секретный бонус TURBO",
+            "FREEBONUS": "100 монет"
+        };
+
+        if (input === "") {
+            result.className = "result error";
+            result.innerText = "Введите код";
+            return;
+        }
+
+        if (codes[input]) {
+            result.className = "result success";
+            result.innerText = codes[input];
+        } else {
+            result.className = "result error";
+            result.innerText = "Неверный код";
+        }
+    }
+</script>
+
+</body>
+</html>
